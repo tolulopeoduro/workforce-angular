@@ -1,0 +1,32 @@
+.nav{
+    width: 100%;
+    height: 60px;
+    background-color: #122973;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container {
+    box-sizing: border-box;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid green;
+    height: inherit;
+}
+
+.logo {
+    height: 80px;
+}
+
+.nav-middle {
+    width: 500px;
+    
+    >.search-bar {
+        width: 20px;
+    }
+}
+

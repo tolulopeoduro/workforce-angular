@@ -4,18 +4,20 @@
         <form>
             <label>
                 Email
-                <input/>
+                <input type = "text" name = "email" [(ngModel)]="email" />
             </label>
             <label>
                 Password
-                <input type="password">
+                <input type="password" name = "password" [(ngModel)]="password" >
             </label>
             <a href="/login">Forgot Password?</a>
-            <button>SIGNUP</button>
+            <button *ngIf="loading===false" (click)="login()">LOGIN</button>
+            <button *ngIf="loading===true"><i class="fas fa-compact-disc fa-spin" disabled></i></button>
         </form>
+        <p *ngIf="error" class="error">{{error}}</p>
         <div class="gradient-div">
             <span>OR</span>
         </div>
-        <button class="signup">LOGIN</button>
+        <button class="signup">SIGNUP</button>
     </div>
 </div>
