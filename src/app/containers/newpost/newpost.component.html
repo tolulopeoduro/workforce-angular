@@ -1,1 +1,24 @@
-<app-nav></app-nav>
+<input class ="input-title" name = "title" type="text" placeholder="Title">
+
+<div class = "editor">
+    <editor
+        [(ngModel)] = "currentText"
+        (onChange)="handleChange()"
+        apiKey = {{apiKey}}
+        [init]="{
+        height: 500,
+        menubar: false,
+        plugins: [
+          'advlist paste autolink lists link image charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+        ],
+        paste_data_images: true,
+        toolbar:
+          'undo redo | formatselect | image code \
+          alignleft aligncenter alignright alignjustify | \
+          bullist numlist outdent indent | removeformat | help'
+      }"
+    ></editor>
+</div>
+<button (click) = "handleChange()">CREATE POST</button>
