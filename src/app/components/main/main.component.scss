@@ -1,0 +1,40 @@
+:host {
+    background-color: #F6F4FA;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    justify-content: center;
+}
+
+.main-body {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    height: 100%;
+    padding-top: 60px;
+    position: relative;
+    top : -60px;
+    z-index: 0;
+
+    >.main-left {
+        height: 100%;
+        width: 25vh;
+    }
+
+    >.main-middle {
+        height: 100%;
+        width: 70vh;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    >.main-right {
+        height: 100%;
+        width: 25vh;
+    }
+
+}
+

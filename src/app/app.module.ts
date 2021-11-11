@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './containers/home/home.component';
 import { NewpostComponent } from './containers/newpost/newpost.component';
 import { NavComponent } from './components/nav/nav.component';
+import { MainComponent } from './components/main/main.component';
+import { EditorComponent, EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { NavComponent } from './components/nav/nav.component';
     SignupComponent,
     HomeComponent,
     NewpostComponent,
-    NavComponent
+    NavComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
