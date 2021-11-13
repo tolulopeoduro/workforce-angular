@@ -9,8 +9,8 @@ export class HttpService {
 
   constructor(private http : HttpClient) { }
 
-  getRequest(url : string) {
-    return this.http.get(url).subscribe(response => console.log(response))
+  getRequest(url : string) : Observable<any> {
+    return this.http.get(url)
   }
 
   postRequest(url: string , data : Object , headers : Object): Observable<any> {

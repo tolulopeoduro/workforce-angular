@@ -12,14 +12,10 @@ export class NewpostComponent implements OnInit {
   readonly apiKey = "4zpxg60v03w6ryq4e084yzkbiogxu2icn46w1w0yzi458h0l"
 
 
-  handleChange() {
+  createPost() {
     console.clear()
     console.log(this.currentText)
-  }
-  
-
-  pick(){
-    console.log("hello")
+    console.log(localStorage.getItem("id"))
   }
 
   constructor() { }

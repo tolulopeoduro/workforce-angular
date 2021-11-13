@@ -3,10 +3,9 @@
 <div class = "editor">
     <editor
         [(ngModel)] = "currentText"
-        (onChange)="handleChange()"
         apiKey = {{apiKey}}
         [init]="{
-        height: 500,
+        height: 450,
         menubar: false,
         plugins: [
           'advlist paste autolink lists link image charmap print preview anchor',
@@ -21,4 +20,5 @@
       }"
     ></editor>
 </div>
-<button (click) = "handleChange()">CREATE POST</button>
+<p>Drag and drop to upload image, right click to resize</p>
+<button (click) = "createPost()">CREATE POST</button>

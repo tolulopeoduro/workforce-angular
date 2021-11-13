@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   login = () => {
     this.loading = true
     this.error = null
-    this.httpservice.postRequest( environment.apiUrl , {email : this.email , password : this.password} , {})
+    this.httpservice.postRequest( `${environment.apiUrl}/auth/login` , {email : this.email , password : this.password} , {})
     .subscribe((response) => {
       localStorage.setItem("id" , response.userId)
       localStorage.setItem("token" , response.userId)

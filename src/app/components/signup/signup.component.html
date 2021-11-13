@@ -2,20 +2,32 @@
     <div class="login_form">
         <img src="https://res.cloudinary.com/dtuafcbbd/image/upload/v1634719839/workforce-v2/WORK_FORCE_LOGO.svg" alt="logo" class="logo">
         <form>
+            <div class = "input_group" (submit)="submit()">
+                <label>
+                    First Name
+                    <input name = "first_name" type = "text" [(ngModel)] = "data.first_name" required />
+                </label>
+                <label>
+                    Last Name
+                    <input name = "last_name" type = "text" [(ngModel)] = "data.last_name" required />
+                </label>
+            </div>
             <label>
                 Email
-                <input/>
+                <input name = "email" type = "email" [(ngModel)] = "data.email" required />
             </label>
             <label>
                 Password
-                <input type="password">
+                <input name = "password" type="password" [(ngModel)] = "data.password" required >
             </label>
             <a href="/login">Forgot Password?</a>
-            <button >LOGIN</button>
+            <p *ngIf="error" class="error">{{error}}</p>    
+            <button *ngIf="!loading" type="submit" (click)="submit()" >SIGNUP</button>
+            <button *ngIf="loading"><i class="fas fa-compact-disc fa-spin" disabled></i></button>
         </form>
         <div class="gradient-div">
             <span>OR</span>
         </div>
-        <button class="signup">SIGNUP</button>
+        <button class="signup">LOGIN</button>
     </div>
 </div>

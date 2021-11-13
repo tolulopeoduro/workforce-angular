@@ -12,6 +12,7 @@ import { NewpostComponent } from './containers/newpost/newpost.component';
 import { NavComponent } from './components/nav/nav.component';
 import { MainComponent } from './components/main/main.component';
 import { EditorComponent, EditorModule } from '@tinymce/tinymce-angular';
+import { UserBoxComponent } from './components/user-box/user-box.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { EditorComponent, EditorModule } from '@tinymce/tinymce-angular';
     NewpostComponent,
     NavComponent,
     MainComponent,
+    UserBoxComponent
   ],
   imports: [
     BrowserModule,
