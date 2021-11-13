@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/http/http.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-box',
@@ -7,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserBoxComponent implements OnInit {
 
-  isLoggedIn : boolean = false
-
-  constructor() { }
-
+  userId : any = localStorage.getItem("id");
+  userData : any = null
+  
+  constructor(private http : HttpService) { }
+  
   ngOnInit(): void {
+    this.http.getRequest(`${environment.apiUrl}/users/${this.userId}`)
+    .subscribe(response => {
+      this.userData = response.data
+      
+    })
   }
 
 }

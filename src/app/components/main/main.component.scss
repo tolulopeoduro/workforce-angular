@@ -38,3 +38,23 @@
 
 }
 
+@media screen and (max-width : 800px) {
+    .main-body >.main-left {
+        display: none;
+        //height: 100%;
+        //width: 0vh;
+    }
+
+    .main-body>.main-middle {
+        height: 100%;
+        width: 70vh;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .main-body>.main-right {
+        display: none;
+        height: 100%;
+        width: 25vh;
+    }
+}
