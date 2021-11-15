@@ -1,10 +1,6 @@
-.user-box , .out {
-    
-    
-}
-.no-user {
+.user-box {
     border-radius: 8px;
-    height: 150px;
+    height: 250px;
     width: 100%;
     background-color:auto;
     border-radius: 8px;
@@ -12,21 +8,27 @@
     box-shadow: 0px 2px 4px rgb(148, 139, 139);
 
     >div:nth-child(1) {
-        height: 40%;
-        background-color: #0A1E46;
+        height: 60%;
+        background: linear-gradient(#0A1E46 50%, #DFE1E6 50% , #DFE1E6 50%);
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 8px;
+        border-radius: 8px 8px 0px 0px;
         color: white;
+
+        >img {
+            height: 80%;
+            border-radius: 50%;
+        }
     }
 
     > div:nth-child(2) {
-        height: 60%;
+        height: 40%;
         display: grid;
-        justify-content: space-around;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         background-color: #DFE1E6;
 
         > p {

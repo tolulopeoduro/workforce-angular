@@ -1,3 +1,9 @@
-<div *ngIf = "isLoggedIn === true" class = "user-box">
-    
+<div *ngIf = "userId && userData" class = "user-box">
+    <div>
+        <img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png" >
+    </div>
+    <div>
+        <p>{{userData.first_name}} {{userData.last_name}}</p>
+        <p>{{userData.workplace}}</p>
+    </div>
 </div>
