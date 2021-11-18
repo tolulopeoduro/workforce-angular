@@ -1,0 +1,55 @@
+* {
+    font-family: sans-serif;
+    outline: none;
+}
+
+.header {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+
+    :empty:before{
+        content: "new header";
+        color: brown;
+    }
+
+}
+
+input {
+    width: 100%;
+    resize: vertical;
+    size: 1;
+}
+
+.sub-header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.paragraph {
+    font-size: 18px;
+}
+
+div{
+    border: none;
+    outline : none;
+    height: fit-content;
+    color : black !important;
+}
+
+.header[contentEditable=true]:empty:before{
+    content:"new header";
+    color: gray;
+}
+
+.sub-header[contentEditable=true]:empty:before{
+    content:"new sub-head";
+    color: gray;
+}
+
+.paragraph[contentEditable=true]:empty:before{
+    content:"new paragraph";
+    color: gray;
+}
+
