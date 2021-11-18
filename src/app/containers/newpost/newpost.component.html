@@ -1,24 +1,17 @@
-<input class ="input-title" name = "title" type="text" placeholder="Title">
-
 <div class = "editor">
-    <editor
-        [(ngModel)] = "currentText"
-        apiKey = {{apiKey}}
-        [init]="{
-        height: 450,
-        menubar: false,
-        plugins: [
-          'advlist paste autolink lists link image charmap print preview anchor',
-          'searchreplace visualblocks code fullscreen',
-          'insertdatetime media table paste code help wordcount'
-        ],
-        paste_data_images: true,
-        toolbar:
-          'undo redo | formatselect | image code \
-          alignleft aligncenter alignright alignjustify | \
-          bullist numlist outdent indent | removeformat | help'
-      }"
-    ></editor>
+  <input class ="input-title" [(ngModel)]="title" name = "title" type="text" placeholder="Title">
+  
+  <app-element *ngFor="let element of elements; let i = index" [element]="element" (update)="update($event)" [i] = "i" [editing]="editing" >
+  </app-element>
+  
+  <div class = "new-element">
+    <button><img (click)="toggle()" src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637165894/workforce-v2/icons8-plus-math-90.png" height="25px"></button>
+    <div class = "element-option-div" *ngIf="newElementOpt">
+      <button  (click)="add('header')"><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637163040/workforce-v2/icons8-h-100.png" height="20px"></button>
+      <button  (click)="add('sub-header')"><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637163040/workforce-v2/icons8-h-100.png" height="12px"></button>
+      <button  (click)="add('paragraph')">p</button>
+    </div>
+  </div>
+
+  <button (click)="createPost()">Create Post</button>
 </div>
-<p>Drag and drop to upload image, right click to resize</p>
-<button (click) = "createPost()">CREATE POST</button>
