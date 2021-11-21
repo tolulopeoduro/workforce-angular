@@ -1,4 +1,4 @@
-<div class = "editor">
+<div *ngIf="!loading" class = "editor">
   <input class ="input-title" [(ngModel)]="title" name = "title" type="text" placeholder="Title">
   
   <app-element *ngFor="let element of elements; let i = index" [element]="element" (update)="update($event)" [i] = "i" [editing]="editing" >
@@ -13,5 +13,8 @@
     </div>
   </div>
 
-  <button (click)="createPost()">Create Post</button>
+  <button *ngIf="!isUpdate" (click)="createPost()">Create Post</button>
+  <button *ngIf="isUpdate" (click)="updatePost()">Update</button>
 </div>
+
+<div *ngIf="loading" style="display: flex; justify-content: center; align-items: center;"><app-spinner></app-spinner></div>

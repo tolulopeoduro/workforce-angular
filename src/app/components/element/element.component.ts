@@ -9,23 +9,29 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 
 export class ElementComponent implements OnInit {
 
-  @Output() update : EventEmitter<any>;
-  @ViewChild('myInput') inputText : any;
-  
   constructor() { 
     this.update = new EventEmitter<any>();
   }
 
-  ngOnInit(): void {
-    document.getElementById(`element${this.i}`)?.focus()
-  }
-
-  options : boolean = false
-
+  @Output() update : EventEmitter<any>;
+  @ViewChild('myInput') inputText : any;
   @Input() element : any = null;
   @Input() i : any = null;
   @Input() editing : boolean = false;
   
+  
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      const c =document.getElementById(`element${this.i}`)
+      if (c) {
+        c.textContent = this.element.content;
+      }
+    } , 0)
+  }
+
+  options : boolean = false
+
 
   showOptions = (e : any) => {
     e && e.preventDefault()
