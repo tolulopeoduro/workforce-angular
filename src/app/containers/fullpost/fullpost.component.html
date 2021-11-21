@@ -1,0 +1,13 @@
+<div *ngIf="postData" class="post">
+    <h1 class="header">{{postData.title}}</h1>
+    <div class="author">
+        <div>
+            <img src="{{author.imgurl || 'https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png'}}"
+            height="30px"/>
+            <p><a href=""></a>By {{author.last_name}} {{author.first_name}}</p>
+        </div>
+        <p>{{postData.date}}</p>
+    </div>
+    <br>
+    <app-element *ngFor="let element of postData.content" [element]="element"></app-element>
+</div>

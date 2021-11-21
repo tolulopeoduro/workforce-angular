@@ -16,4 +16,8 @@ export class HttpService {
   postRequest(url: string , data : Object , headers : Object): Observable<any> {
     return this.http.post(url , data , headers)
   }
+
+  putRequest(url : string , data : Object , headers : Object): Observable<any> {
+    return this.http.put(url , data , headers)
+  }
 }

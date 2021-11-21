@@ -1,0 +1,44 @@
+.post {
+}
+
+p {
+    padding-left: 20px;
+}
+
+* {
+    font-family: sans-serif;
+    outline: none;
+}
+
+.author {
+    padding-left: 20px;
+    height: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: baseline;
+
+    >p {
+        padding: 0px;
+        margin-top: 10px;
+    }
+
+    >div {
+        width: auto;
+        display: flex;
+        align-items: center;
+
+        >p {
+            padding-left: 10px;
+        }
+
+    }
+}
+
+.header {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom : 20px;
+}

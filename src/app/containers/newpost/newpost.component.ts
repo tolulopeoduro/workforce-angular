@@ -12,6 +12,27 @@ import { environment } from 'src/environments/environment';
 export class NewpostComponent implements OnInit {
 
   ngOnInit(): void {
+    if (this.router.url.split('/').pop() === 'edit') {
+      this.isUpdate = true
+      this.http.getRequest(`${environment.apiUrl}/post/${this.router.url.split("/")[2]}`)
+      .subscribe(res => {
+        this.loading = true
+        this.postData = res.data[0]
+        console.log(this.postData)
+        this.title = res.data[0].title
+        this.elements = res.data[0].content;
+        this.loading = false
+      }) 
+    } else {
+      this.elements = [
+        {
+          type : "paragraph",
+          content : "",
+          class : ""
+        },
+      ];
+      this.loading = false
+    }
   }
 
   constructor (private http : HttpService , private router : Router) {
@@ -24,15 +45,12 @@ export class NewpostComponent implements OnInit {
   options : boolean = false;
   newElementOpt : boolean = false;
   title : string = ""
+  postData : any = null;
+  isUpdate : boolean = false;
+  loading : boolean = true;
+  elements : any = null;
 
-
-  elements = [
-    {
-      type : "paragraph",
-      content : "",
-      class : ""
-    },
-  ];
+  
 
   toggle = () => {
     this.newElementOpt === true ? this.newElementOpt = false : this.newElementOpt = true
@@ -66,6 +84,20 @@ export class NewpostComponent implements OnInit {
     }
     this.http.postRequest(`${environment.apiUrl}/post` , data , {}).subscribe(res => {
       this.router.navigate(['/'])
+    })
+  }
+
+  updatePost = () => {
+    const data = {
+      id : this.postData._id,
+      title : this.title,
+      author : localStorage.getItem("id"),
+      content : this.elements,
+      updated : new Date().toLocaleDateString
+    }
+    this.http.putRequest(`${environment.apiUrl}/post/${data.id}` , data , {}).subscribe(res => {
+      console.log(res)
+      this.router.navigate([`/post/${this.postData.id}`])
     })
   }
 

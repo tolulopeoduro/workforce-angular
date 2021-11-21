@@ -7,12 +7,6 @@
     font-size: 40px;
     font-weight: bold;
     margin-top: 20px;
-
-    :empty:before{
-        content: "new header";
-        color: brown;
-    }
-
 }
 
 input {
