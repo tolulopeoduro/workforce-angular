@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/http/http.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  posts : any = null
+
+  constructor(private http : HttpService) { }
+  
 
   ngOnInit(): void {
+    this.http.getRequest(`${environment.apiUrl}/post`)
+    .subscribe(res => {
+      this.posts = res.data
+    })
   }
 
 }
