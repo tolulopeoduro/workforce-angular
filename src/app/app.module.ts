@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ArticleLinkComponent } from './components/article-link/article-link.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { PromptComponent } from './components/prompt/prompt.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    PromptComponent,
   ],
   imports: [
     BrowserModule,

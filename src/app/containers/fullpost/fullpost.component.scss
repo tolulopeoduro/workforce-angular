@@ -10,6 +10,28 @@ p {
     outline: none;
 }
 
+.post_details {
+    display: flex;
+    justify-content: space-between;
+
+    >div:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        width: 90px;
+
+        > button {
+            box-sizing: border-box;
+            height: 43px;
+            width: 43px;
+            padding: 0px;
+            border: none;
+            > img {
+                height : 40px;
+            }
+        }
+    }
+}
+
 .author {
     padding-left: 20px;
     height: 30px;
