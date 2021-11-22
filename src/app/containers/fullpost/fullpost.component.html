@@ -17,3 +17,4 @@
     <br>
     <app-element *ngFor="let element of postData.content" [element]="element"></app-element>
 </div>
+<app-prompt *ngIf="deleteButtonActive" (accept)="deletePost()" (decline)="ToggleDeleteDialog(false)" ></app-prompt>

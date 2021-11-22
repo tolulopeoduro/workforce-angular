@@ -7,17 +7,13 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http"
 import { FormsModule } from '@angular/forms';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { ArticleLinkComponent } from './components/article-link/article-link.component';
-import { TruncatePipe } from './pipes/truncate.pipe';
-import { PromptComponent } from './components/prompt/prompt.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    PromptComponent,
   ],
   imports: [
     BrowserModule,

@@ -33,13 +33,16 @@ export class FullpostComponent implements OnInit {
   deletePost = () => {
     this.http.deleteRequest(`${environment.apiUrl}/post/${this.postData._id}`)
     .subscribe(res => {
+      this.deleteButtonActive = false;
       this.router.navigate(["/"])
     })
   }
 
-  ToggleDeleteDialog = (a) => {
+  ToggleDeleteDialog = (a : boolean) => {
     this.deleteButtonActive = a;
   }
+
+
   
 
 }
