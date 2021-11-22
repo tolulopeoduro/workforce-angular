@@ -1,0 +1,19 @@
+<div routerLink = {{link}} class="article">
+    <div>
+        <img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png" height="50px" >
+        <div>
+            <span>{{author.first_name}} {{author.last_name}}</span>
+            <span>{{article.date}}</span>
+        </div>
+    </div>
+    <div>
+        <img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png" height="60px" width="80px">
+        <div>
+            <h3>{{article.title}}</h3>
+            <p>{{article.content[0].content | truncate}}</p>
+        </div>
+    </div>
+    <div>
+        
+    </div>
+</div>

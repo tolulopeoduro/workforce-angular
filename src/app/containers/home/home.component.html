@@ -1,1 +1,4 @@
-<p>Hello</p>
+<div>
+    <app-welcome></app-welcome>
+    <app-article-link *ngFor="let item of posts" [article]="item"></app-article-link>
+</div>

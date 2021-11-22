@@ -12,6 +12,9 @@ import { NavComponent } from '../nav/nav.component';
 import { NewpostComponent } from 'src/app/containers/newpost/newpost.component';
 import { HomeComponent } from 'src/app/containers/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { WelcomeComponent } from '../welcome/welcome.component';
+import { ArticleLinkComponent } from '../article-link/article-link.component';
+import { TruncatePipe } from 'src/app/pipes/truncate.pipe';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { FormsModule } from '@angular/forms';
     ElementComponent,
     AttributesComponent,
     FullpostComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    WelcomeComponent,
+    ArticleLinkComponent,
+    TruncatePipe
   ],
   imports: [
     CommonModule,
