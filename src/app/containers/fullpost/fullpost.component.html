@@ -1,13 +1,20 @@
 <div *ngIf="postData" class="post">
     <h1 class="header">{{postData.title}}</h1>
-    <div class="author">
-        <div>
-            <img src="{{author.imgurl || 'https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png'}}"
-            height="30px"/>
-            <p><a href=""></a>By {{author.last_name}} {{author.first_name}}</p>
+    <div class="post_details">
+        <div class="author">
+            <div>
+                <img src="{{author.imgurl || 'https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png'}}"
+                height="30px"/>
+                <p><a href=""></a>By {{author.last_name}} {{author.first_name}}</p>
+            </div>
+            <p>{{postData.date}}</p>
         </div>
-        <p>{{postData.date}}</p>
+        <div>
+            <button routerLink='/post/{{postData._id}}/edit'><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637579600/workforce-v2/edit.png" height="40px"></button>
+            <button (click)="ToggleDeleteDialog(true)" ><img src="https://res.cloudinary.com/dtuafcbbd/image/upload/v1637580249/workforce-v2/bin.png"></button>
+        </div>
     </div>
     <br>
     <app-element *ngFor="let element of postData.content" [element]="element"></app-element>
 </div>
+<app-prompt *ngIf="deleteButtonActive" (accept)="deletePost()" (decline)="ToggleDeleteDialog(false)" ></app-prompt>

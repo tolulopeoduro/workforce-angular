@@ -14,7 +14,8 @@ export class FullpostComponent implements OnInit {
 
   postData : any = null;
   author : any = null;
-
+  deleteButtonActive : boolean = false;
+  
   ngOnInit(): void {
     this.http.getRequest(`${environment.apiUrl}/post/${this.router.url.split("/")[2]}`)
     .subscribe(res => {
@@ -26,9 +27,22 @@ export class FullpostComponent implements OnInit {
         console.log(this.author)
       })
     })
-
-    
+    console.log(this.postData)
   }
+
+  deletePost = () => {
+    this.http.deleteRequest(`${environment.apiUrl}/post/${this.postData._id}`)
+    .subscribe(res => {
+      this.deleteButtonActive = false;
+      this.router.navigate(["/"])
+    })
+  }
+
+  ToggleDeleteDialog = (a : boolean) => {
+    this.deleteButtonActive = a;
+  }
+
+
   
 
 }

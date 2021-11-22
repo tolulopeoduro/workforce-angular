@@ -20,4 +20,8 @@ export class HttpService {
   putRequest(url : string , data : Object , headers : Object): Observable<any> {
     return this.http.put(url , data , headers)
   }
+
+  deleteRequest(url : string) : Observable<any> {
+    return this.http.delete(url)
+  }
 }

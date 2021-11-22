@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { ArticleLinkComponent } from '../article-link/article-link.component';
 import { TruncatePipe } from 'src/app/pipes/truncate.pipe';
+import { PromptComponent } from '../prompt/prompt.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TruncatePipe } from 'src/app/pipes/truncate.pipe';
     SpinnerComponent,
     WelcomeComponent,
     ArticleLinkComponent,
-    TruncatePipe
+    TruncatePipe,
+    PromptComponent
   ],
   imports: [
     CommonModule,
