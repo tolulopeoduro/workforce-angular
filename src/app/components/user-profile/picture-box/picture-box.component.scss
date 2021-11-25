@@ -1,0 +1,46 @@
+
+:host {
+    width: 100%;
+}
+.picture-box {
+    box-sizing: border-box;
+    height: 300px;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background: linear-gradient(#0A1E46 50%, #DFE1E6 50% , #DFE1E6 50%);
+    border-radius: 8px;
+
+
+    >.picture {
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+
+        > div {
+            position: relative;
+            color: white;
+            background-color: #19D2D2;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            top: 70%;
+            left: 83%;
+            border: 1px solid white;
+        }
+    }
+    h1 {
+        font-weight: bold;
+        font-size: large;
+        margin-top: 12px;   
+    }
+}

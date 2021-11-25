@@ -16,7 +16,9 @@ import { WelcomeComponent } from '../welcome/welcome.component';
 import { ArticleLinkComponent } from '../article-link/article-link.component';
 import { TruncatePipe } from 'src/app/pipes/truncate.pipe';
 import { PromptComponent } from '../prompt/prompt.component';
-
+import { BioComponent } from '../user-profile/bio/bio.component';
+import { PictureBoxComponent } from '../user-profile/picture-box/picture-box.component';
+import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import { PromptComponent } from '../prompt/prompt.component';
     WelcomeComponent,
     ArticleLinkComponent,
     TruncatePipe,
-    PromptComponent
+    PromptComponent,
+    BioComponent,
+    PictureBoxComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
