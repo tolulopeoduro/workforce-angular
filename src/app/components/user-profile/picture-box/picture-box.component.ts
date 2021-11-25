@@ -11,7 +11,7 @@ export class PictureBoxComponent implements OnInit {
 
   }
   @Input() imgUrl : string = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png"
-  @Input() name : string = "Tolu"
+  @Input() name : any = null
 
   ngOnInit(): void {
   }
