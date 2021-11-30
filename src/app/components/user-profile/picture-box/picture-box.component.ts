@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HttpService } from 'src/app/services/http/http.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-picture-box',
@@ -7,13 +9,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PictureBoxComponent implements OnInit {
 
-  constructor() { 
+  @Input() editable : boolean = false
+  imgChangeDialog : boolean = true
+  @Output() show : EventEmitter<void>
 
+  constructor(private http : HttpService) { 
+    this.show = new EventEmitter<void>()
   }
-  @Input() imgUrl : string = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png"
+  @Input() imgUrl : any = null
   @Input() name : any = null
 
   ngOnInit(): void {
   }
+
+  handleClick = () => this.show.emit()
 
 }

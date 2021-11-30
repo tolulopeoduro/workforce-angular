@@ -7,9 +7,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http"
 import { FormsModule } from '@angular/forms';
-import { PictureBoxComponent } from './components/user-profile/picture-box/picture-box.component';
-import { BioComponent } from './components/user-profile/bio/bio.component';
-
 
 @NgModule({
   declarations: [

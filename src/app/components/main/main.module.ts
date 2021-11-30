@@ -19,6 +19,9 @@ import { PromptComponent } from '../prompt/prompt.component';
 import { BioComponent } from '../user-profile/bio/bio.component';
 import { PictureBoxComponent } from '../user-profile/picture-box/picture-box.component';
 import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
+import { ProfileUpdateComponent } from 'src/app/profile-update/profile-update.component';
+import { ImgDialogComponent } from 'src/app/compoents/img-dialog/img-dialog.component';
+import { ImageCropperComponent, ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -37,12 +40,15 @@ import { UserProfileComponent } from 'src/app/components/user-profile/user-profi
     PromptComponent,
     BioComponent,
     PictureBoxComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ProfileUpdateComponent,
+    ImgDialogComponent,
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule
   ]
 })
 export class MainModule { }

@@ -1,6 +1,7 @@
 <div class = "picture-box">
     <div class="picture" style="background-image: url({{imgUrl}});">
-        <div>+</div>
+        <p *ngIf="editable" (click)="handleClick()" >CHANGE<br><br>PROFILE<br><br>PHOTO</p>
+        <div *ngIf="!editable">+</div>
     </div>
     <h1>{{name}}</h1>
 </div>

@@ -13,7 +13,12 @@ export class UserProfileComponent implements OnInit {
   userData : any = null;
   userName : any = null;
   posts : any = null;
-  
+  isMainUser : boolean = localStorage.getItem('id') === this.router.url.split('/')[2]
+  imgChangeDialog : boolean = false
+  loading : boolean = true
+  showDialog = () => this.imgChangeDialog = true
+  hideDialog = () => this.imgChangeDialog = false
+
   constructor(private http : HttpService , private router : Router) {
     
   }
@@ -24,11 +29,33 @@ export class UserProfileComponent implements OnInit {
       this.userData = response.data;
       console.log(this.userData)
       this.userName = `${this.userData.first_name} ${this.userData.last_name}`
-    })
-    this.http.getRequest(`${environment.apiUrl}/post`)
-    .subscribe(response => {
-      this.posts = response.data
+      setTimeout(()=> {
+        this.http.getRequest(`${environment.apiUrl}/post`)
+        .subscribe(response => {
+          this.posts = response.data
+        })
+        this.loading = false;
+      } , 0)
     })
   }
+
+
+  reload = () => {
+    this.imgChangeDialog = false
+    this.http.getRequest(`${environment.apiUrl}/users/${this.router.url.split('/')[2]}`)
+    .subscribe(response  => {
+      this.userData = response.data;
+      console.log(this.userData)
+      this.userName = `${this.userData.first_name} ${this.userData.last_name}`
+      setTimeout(()=> {
+        this.http.getRequest(`${environment.apiUrl}/post`)
+        .subscribe(response => {
+          this.posts = response.data
+        })
+        this.loading = false;
+      } , 0)
+    })
+  }
+  
 
 }
