@@ -17,10 +17,12 @@ export class UserBoxComponent implements OnInit {
   constructor(private http : HttpService) { }
 
   ngOnInit(): void {
-    this.http.getRequest(`${environment.apiUrl}/users/${this.userId}`)
-    .subscribe(response  => {
-      this.userData = response.data;
-    })
+    if (this.userId) {
+      this.http.getRequest(`${environment.apiUrl}/users/${this.userId}`)
+      .subscribe(response  => {
+        this.userData = response.data;
+      })
+    }
   }
 
 }

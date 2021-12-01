@@ -1,0 +1,21 @@
+<div>
+    <div><button (click)="exit()">x</button></div>
+    <div class="cropper">
+        <image-cropper 
+        [imageChangedEvent]="imgChangeEvt" 
+        [maintainAspectRatio]="true" 
+        [aspectRatio]="4 / 4"
+        [resizeToWidth]="256" 
+        format="png" 
+        (imageCropped)="cropImg($event)" 
+        (imageLoaded)="imgLoad()"
+        (cropperReady)="initCropper()" 
+        (loadImageFailed)="imgFailed()">
+      </image-cropper>
+  </div>
+  <div class="col-md-12">
+    <input type="file" (change)="onFileChange($event)" />
+    <button (click)="submit()">UPLOAD</button>
+  </div>
+
+</div>

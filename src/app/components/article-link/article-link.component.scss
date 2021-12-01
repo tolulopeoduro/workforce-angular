@@ -1,6 +1,6 @@
 .article {
     box-sizing: border-box;
-    height: 200px;
+    height: 230px;
     margin: 20px 0px;
     border-radius: 4px;
     display: flex;
@@ -60,4 +60,8 @@
         background-color: rgb(187, 187, 187);
     }
 
+}
+
+.author-img {
+    border-radius: 50%;
 }
