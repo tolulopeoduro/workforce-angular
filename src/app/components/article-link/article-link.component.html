@@ -1,5 +1,5 @@
-<div routerLink = {{link}} class="article">
-    <div>
+<div *ngIf="author" class="article">
+    <div routerLink = "/user/{{article.author}}">
         <img  class="author-img" *ngIf="author.imgUrl;else default" src = "{{author.imgUrl}}" height="50px" >
         <ng-template #default><img class="author-img" #default src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png" height="50px" ></ng-template>
         <div>
@@ -7,7 +7,7 @@
             <span>{{article.date}}</span>
         </div>
     </div>
-    <div>
+    <div routerLink = {{link}}>
         <img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png" height="60px" width="80px">
         <div>
             <h3>{{article.title}}</h3>

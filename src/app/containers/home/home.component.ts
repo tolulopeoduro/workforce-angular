@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 export class HomeComponent implements OnInit {
 
   posts : any = null
+  readonly userId : any = localStorage.getItem('id')
+
 
   constructor(private http : HttpService) { }
   

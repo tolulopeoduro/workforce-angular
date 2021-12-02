@@ -8,10 +8,10 @@
         </div>
         <div class = "buttons">
             <i class="fa fa-home" routerLink="/" aria-hidden="true"></i>
-            <i class="fa fa-user-circle" routerLink="/my-profile"></i>   
-            <i class="fa fa-bell"></i>
+            <i class="fa fa-user-circle" routerLink="{{userId ? '/my-profile' : '/login'}}"></i>   
+            <i *ngIf="userId" class="fa fa-bell"></i>
         </div>
     </div>
     <div class="nav-right">
-        <i class="fas fa-sign-out-alt" (click)="signOut()"></i>
+        <i *ngIf="userId" class="fas fa-sign-out-alt" (click)="signOut()"></i>
     </div>

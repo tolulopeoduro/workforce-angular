@@ -11,8 +11,18 @@ const routes: Routes = [
       {path : "create" , component : NewpostComponent},
       {path : 'post/:id' , component : FullpostComponent},
       {path : 'post/:id/edit' , component : NewpostComponent},
-      {path : 'user/:id' , component : UserProfileComponent},
-      {path : 'user/:id/edit' , component : ProfileUpdateComponent}
+      //{path : 'user/:id' , component : UserProfileComponent},
+      //{path : 'my-profile' , component : UserProfileComponent}
+      {
+        path : "user/:id" , component : UserProfileComponent,
+        loadChildren : () => import('../user-profile/user-profile.module')
+        .then((m) => m.UserProfileModule)
+      },
+      {
+        path : "my-profile" , component : UserProfileComponent,
+        loadChildren : () => import('../user-profile/user-profile.module')
+        .then((m) => m.UserProfileModule)
+      },
 ];
 
 @NgModule({

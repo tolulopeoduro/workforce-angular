@@ -10,6 +10,8 @@ export class NavComponent implements OnInit {
 
   constructor(private router : Router) { }
 
+  readonly userId : any = localStorage.getItem('id')
+
   ngOnInit(): void {
   }
 

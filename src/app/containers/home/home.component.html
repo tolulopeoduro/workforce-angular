@@ -1,4 +1,4 @@
 <div>
-    <app-welcome></app-welcome>
+    <app-welcome *ngIf="userId"></app-welcome>
     <app-article-link *ngFor="let item of posts" [article]="item"></app-article-link>
 </div>

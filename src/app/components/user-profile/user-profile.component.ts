@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,40 +13,37 @@ export class UserProfileComponent implements OnInit {
   userData : any = null;
   userName : any = null;
   posts : any = null;
-  isMainUser : boolean = localStorage.getItem('id') === this.router.url.split('/')[2]
+  userImg : any = null;
+  isMainUser : boolean = localStorage.getItem('id') === this.router.url.split('/')[2] || this.router.url.split('/')[1] === 'my-profile'
   imgChangeDialog : boolean = false
   loading : boolean = true
   showDialog = () => this.imgChangeDialog = true
   hideDialog = () => this.imgChangeDialog = false
-
-  constructor(private http : HttpService , private router : Router) {
-    
+  userId : any = null
+  
+  constructor(private http : HttpService , private router : Router , private activatedRoute : ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe(params => {
+          //this.userData = this.router.url.split('/')[1] === 'my-profile' ? localStorage.getItem('id') : activatedRoute.snapshot.url[1].path
+          this.userId = this.router.url.split('/')[1] === 'my-profile' ? localStorage.getItem('id') : this.router.url.split('/')[2]  // localStorage.getItem('id') || this.router.url.split('/')[2]
+          this.getData()
+        });
   }
-
+  
   ngOnInit(): void {
-    this.http.getRequest(`${environment.apiUrl}/users/${this.router.url.split('/')[2]}`)
-    .subscribe(response  => {
-      this.userData = response.data;
-      console.log(this.userData)
-      this.userName = `${this.userData.first_name} ${this.userData.last_name}`
-      setTimeout(()=> {
-        this.http.getRequest(`${environment.apiUrl}/post`)
-        .subscribe(response => {
-          this.posts = response.data
-        })
-        this.loading = false;
-      } , 0)
-    })
+    this.getData()
   }
 
 
-  reload = () => {
-    this.imgChangeDialog = false
-    this.http.getRequest(`${environment.apiUrl}/users/${this.router.url.split('/')[2]}`)
+  getData = () => {
+    this.loading = true
+    if (this.router.url.split('/')[1] === 'my-profile' && !localStorage.getItem('id')) {
+      this.router.navigate(['/login'])
+    }
+    this.http.getRequest(`${environment.apiUrl}/users/${this.userId}`)
     .subscribe(response  => {
       this.userData = response.data;
-      console.log(this.userData)
-      this.userName = `${this.userData.first_name} ${this.userData.last_name}`
+      this.userName = `${response.data.first_name} ${response.data.last_name}`
+      this.userImg = response.data.imgUrl
       setTimeout(()=> {
         this.http.getRequest(`${environment.apiUrl}/post`)
         .subscribe(response => {
