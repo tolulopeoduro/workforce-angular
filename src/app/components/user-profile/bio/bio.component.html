@@ -2,8 +2,8 @@
     <div>
         <div class="about">
             <div>
-                <h3>About {{user.first_name}}</h3>
-                <p *ngIf="user.bio; else noBio">{{user.bio | truncate}} <a type="button">more</a></p>
+                <h3>About {{user.first_name.split(' ')[0]}}</h3>
+                <p *ngIf="user.bio; else noBio">{{user.bio | truncate : 20}} <a type="button">more</a></p>
                 <ng-template #noBio>User has not added bio</ng-template>
             </div>
             <div class="followers-and-posts">
@@ -18,7 +18,7 @@
                 <div>
                     <p>Posts</p>
                     <span>
-                        <p *ngIf="user.posts;else noPosts">{{user.posts.length}}</p>
+                        <p *ngIf="posts;else noPosts">{{posts}}</p>
                         <ng-template #noPosts>0</ng-template>
                         <img src="https://res.cloudinary.com/dtuafcbbd/image/upload/v1637785070/workforce-v2/posts_1.png" alt="posts" height="25px">
                     </span>
@@ -26,5 +26,4 @@
             </div>
         </div>
     </div>
-    <button class="edit-button">Edit profile</button>
 </div>

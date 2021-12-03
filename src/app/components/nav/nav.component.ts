@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { clearData } from 'src/app/reducers/userActions';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router , private store : Store<{user : any}>) { }
 
   readonly userId : any = localStorage.getItem('id')
 
@@ -17,7 +19,8 @@ export class NavComponent implements OnInit {
 
   signOut = () => {
     localStorage.clear()
-    this.router.navigate(['/login'])
+    this.store.dispatch(clearData())
+    this.router.navigate(['/'])
   }
 
 }

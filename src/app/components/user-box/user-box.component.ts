@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
 
@@ -14,15 +15,12 @@ export class UserBoxComponent implements OnInit {
   userId : any = localStorage.getItem("id")
   userData : any = null
 
-  constructor(private http : HttpService) { }
+  constructor(private http : HttpService , private store : Store<{user : any}>) { }
 
   ngOnInit(): void {
-    if (this.userId) {
-      this.http.getRequest(`${environment.apiUrl}/users/${this.userId}`)
-      .subscribe(response  => {
-        this.userData = response.data;
-      })
-    }
+    this.store.select('user').subscribe(res => {
+      this.userData = res.data
+    })
   }
 
 }

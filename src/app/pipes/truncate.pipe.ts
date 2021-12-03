@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TruncatePipe implements PipeTransform {
 
-  transform(value: any, ...args: unknown[]): unknown {
+  transform(value: any, n : any): unknown {
     const v = value.split(' ')
-    return v.slice(0 , 16).join(' ')+"..."
+    return v.slice(0 , n).join(' ')+"..."
   }
 
 }

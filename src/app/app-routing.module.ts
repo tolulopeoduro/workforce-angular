@@ -3,9 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FullpostComponent } from './containers/fullpost/fullpost.component';
-import { HomeComponent } from './containers/home/home.component';
-import { NewpostComponent } from './containers/newpost/newpost.component';
 
 const routes: Routes = [
   {
