@@ -7,6 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http"
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './reducers/userReducer';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    StoreModule.forRoot({user : userReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

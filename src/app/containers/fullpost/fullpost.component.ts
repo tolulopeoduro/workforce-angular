@@ -15,6 +15,7 @@ export class FullpostComponent implements OnInit {
   postData : any = null;
   author : any = null;
   deleteButtonActive : boolean = false;
+  showActions : any = null;
   
   ngOnInit(): void {
     this.http.getRequest(`${environment.apiUrl}/post/${this.router.url.split("/")[2]}`)
@@ -24,10 +25,9 @@ export class FullpostComponent implements OnInit {
       this.http.getRequest(`${environment.apiUrl}/users/${this.postData.author}`)
       .subscribe(response  => {
         this.author = response.data;
-        console.log(this.author)
+        this.showActions = this.author._id === localStorage.getItem('id')
       })
     })
-    console.log(this.postData)
   }
 
   deletePost = () => {

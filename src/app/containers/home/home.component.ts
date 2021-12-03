@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { setData } from 'src/app/reducers/userActions';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit {
   readonly userId : any = localStorage.getItem('id')
 
 
-  constructor(private http : HttpService) { }
+  constructor(private http : HttpService , private store : Store<{user : any}>) { }
   
 
   ngOnInit(): void {
