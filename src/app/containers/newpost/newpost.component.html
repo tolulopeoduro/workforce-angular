@@ -1,6 +1,5 @@
 <div *ngIf="!loading" class = "editor">
   <input class ="input-title" [(ngModel)]="title" name = "title" type="text" placeholder="Title">
-  
   <app-element *ngFor="let element of elements; let i = index" [element]="element" (update)="update($event)" [i] = "i" [editing]="editing" >
   </app-element>
   
