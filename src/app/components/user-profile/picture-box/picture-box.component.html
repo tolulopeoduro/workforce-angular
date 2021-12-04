@@ -1,7 +1,13 @@
 <div class = "picture-box">
-    <div class="picture" style="background-image: url({{imgUrl}});">
+    <div *ngIf="imgUrl;else noImg" class="picture" style="background-image: url({{imgUrl}});">
         <p *ngIf="editable" (click)="handleClick()" >CHANGE<br><br>PROFILE<br><br>PHOTO</p>
         <div *ngIf="!editable">+</div>
     </div>
+    <ng-template #noImg>
+        <div class="picture" style="background-image: url(https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png);">
+            <p *ngIf="editable" (click)="handleClick()" >CHANGE<br><br>PROFILE<br><br>PHOTO</p>
+            <div *ngIf="!editable">+</div>
+        </div>
+    </ng-template>
     <h1>{{name}}</h1>
 </div>

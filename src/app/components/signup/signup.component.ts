@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { setData } from 'src/app/reducers/userActions';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +22,7 @@ export class SignupComponent implements OnInit {
     password : ""
   }
 
-  constructor(private http : HttpService , private router : Router) { }
+  constructor(private http : HttpService , private router : Router , private store : Store<{user : any}>) { }
 
   submit() {
     this.loading = true
@@ -29,6 +31,8 @@ export class SignupComponent implements OnInit {
     .subscribe((response) => {
       localStorage.setItem("id" , response.userId)
       localStorage.setItem("token" , response.userId)
+      this.http.getRequest(`${environment.apiUrl}/users/${localStorage.getItem('id')}`)
+      .subscribe(res => this.store.dispatch(setData(res)))
       this.loading = false
       this.router.navigate(["/"])
     }, (error) => {

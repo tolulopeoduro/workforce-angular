@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { setData } from 'src/app/reducers/userActions';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,46 +15,48 @@ export class UserProfileComponent implements OnInit {
   userData : any = null;
   userName : any = null;
   posts : any = null;
-  isMainUser : boolean = localStorage.getItem('id') === this.router.url.split('/')[2]
+  userImg : any = null;
+  isMainUser : boolean = localStorage.getItem('id') === this.router.url.split('/')[2] || this.router.url.split('/')[1] === 'my-profile'
   imgChangeDialog : boolean = false
   loading : boolean = true
   showDialog = () => this.imgChangeDialog = true
   hideDialog = () => this.imgChangeDialog = false
-
-  constructor(private http : HttpService , private router : Router) {
-    
+  userId : any = null;
+  totalPosts : any = null
+  
+  constructor(private http : HttpService , private router : Router , private activatedRoute : ActivatedRoute , private store : Store<{user : any}>) {
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.userId = this.router.url.split('/')[1] === 'my-profile' ? localStorage.getItem('id') : this.router.url.split('/')[2]
+      this.getData()
+    });
   }
-
+  
   ngOnInit(): void {
-    this.http.getRequest(`${environment.apiUrl}/users/${this.router.url.split('/')[2]}`)
-    .subscribe(response  => {
-      this.userData = response.data;
-      console.log(this.userData)
-      this.userName = `${this.userData.first_name} ${this.userData.last_name}`
-      setTimeout(()=> {
-        this.http.getRequest(`${environment.apiUrl}/post`)
-        .subscribe(response => {
-          this.posts = response.data
-        })
-        this.loading = false;
-      } , 0)
-    })
+    this.getData()
   }
 
 
-  reload = () => {
-    this.imgChangeDialog = false
-    this.http.getRequest(`${environment.apiUrl}/users/${this.router.url.split('/')[2]}`)
+  getData = () => {
+    
+    this.loading = true
+    if (this.router.url.split('/')[1] === 'my-profile' && !localStorage.getItem('id')) {
+      this.router.navigate(['/login'])
+    }
+    this.http.getRequest(`${environment.apiUrl}/users/${this.userId}`)
     .subscribe(response  => {
       this.userData = response.data;
-      console.log(this.userData)
-      this.userName = `${this.userData.first_name} ${this.userData.last_name}`
+      this.store.dispatch(setData(response))
+      this.userName = `${this.userData.first_name + " " + this.userData.last_name}`
+      localStorage.setItem('data' , JSON.stringify(response.data))
+      this.userImg = response.data.imgUrl
       setTimeout(()=> {
-        this.http.getRequest(`${environment.apiUrl}/post`)
+        this.http.getRequest(`${environment.apiUrl}/post/user/${this.userId}`)
         .subscribe(response => {
           this.posts = response.data
+          this.totalPosts = response.data.length
+          this.loading = false;
+          this.imgChangeDialog = false
         })
-        this.loading = false;
       } , 0)
     })
   }

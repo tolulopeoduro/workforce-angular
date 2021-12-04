@@ -1,17 +1,17 @@
-<div routerLink = {{link}} class="article">
-    <div>
+<div *ngIf="author" class="article">
+    <div routerLink = "/user/{{article.author}}">
         <img  class="author-img" *ngIf="author.imgUrl;else default" src = "{{author.imgUrl}}" height="50px" >
         <ng-template #default><img class="author-img" #default src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png" height="50px" ></ng-template>
         <div>
-            <span>{{author.first_name}} {{author.last_name}}</span>
+            <span>{{author.first_name + " " + author.last_name}}</span>
             <span>{{article.date}}</span>
         </div>
     </div>
-    <div>
-        <img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png" height="60px" width="80px">
+    <div routerLink = {{link}}>
+        <img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v163811647/workfrce-v2/149071.png" height="60px" width="80px">
         <div>
-            <h3>{{article.title}}</h3>
-            <p>{{article.content[0].content | truncate}}</p>
+            <h3>{{article.title | truncate : 10}}</h3>
+            <p>{{article.content[0].content | truncate : 16 }}</p>
         </div>
     </div>
     <div>
