@@ -45,7 +45,9 @@ export class UserProfileComponent implements OnInit {
     this.http.getRequest(`${environment.apiUrl}/users/${this.userId}`)
     .subscribe(response  => {
       this.userData = response.data;
-      this.store.dispatch(setData(response))
+      if (this.router.url.split('/')[1] === 'my-profile') {
+        this.store.dispatch(setData(response))
+      }
       this.userName = `${this.userData.first_name + " " + this.userData.last_name}`
       localStorage.setItem('data' , JSON.stringify(response.data))
       this.userImg = response.data.imgUrl
