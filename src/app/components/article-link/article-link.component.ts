@@ -16,8 +16,8 @@ export class ArticleLinkComponent implements OnInit {
   constructor(private http : HttpService) { }
 
   ngOnInit(): void {
-    if (this.article.author) {
-      this.http.getRequest(`${environment.apiUrl}/users/${this.article.author}`)
+    if (this.article.userId) {
+      this.http.getRequest(`${environment.apiUrl}/users/${this.article.userId}`)
       .subscribe(res => {
         this.author = res.data
       })

@@ -78,11 +78,12 @@ export class NewpostComponent implements OnInit {
   createPost = () => {
     const data = {
       title : this.title,
-      author : localStorage.getItem("id"),
+      userId : localStorage.getItem("id"),
       content : this.elements,
       date : new Date().toLocaleDateString()
     }
-    this.http.postRequest(`${environment.apiUrl}/post` , data , {}).subscribe(res => {
+    
+    this.http.postRequest(`${environment.apiUrl}/post` , data , {headers : {'Authorization' : `${localStorage.getItem('token')}`}}).subscribe(res => {
       this.router.navigate(['/'])
     })
   }

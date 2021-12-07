@@ -22,7 +22,7 @@ export class FullpostComponent implements OnInit {
     .subscribe(res => {
       this.postData = res.data[0]
       console.log(this.postData)
-      this.http.getRequest(`${environment.apiUrl}/users/${this.postData.author}`)
+      this.http.getRequest(`${environment.apiUrl}/users/${this.postData.userId}`)
       .subscribe(response  => {
         this.author = response.data;
         this.showActions = this.author._id === localStorage.getItem('id')
