@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { setData } from 'src/app/reducers/userActions';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,13 @@ import { environment } from 'src/environments/environment';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private router : Router , private http : HttpClient , private store : Store<{user : any}>) { }
+  fullpage : boolean = false
+
+  constructor(private router : Router , private http : HttpClient , private store : Store<{user : any}> , private activatedRoute : ActivatedRoute) {
+    this.router.events.subscribe(params => {
+      this.fullpage = this.router.url.split('/')[1] === 'post'
+    });
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem('id')) {

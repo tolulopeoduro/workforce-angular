@@ -38,3 +38,35 @@
 
 }
 
+.full-body {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    height: 100%;
+    padding-top: 80px;
+    position: relative;
+    top : -60px;
+    z-index: 0;
+
+    >.main-left {
+        height: 100%;
+        width: 0;
+        display: none;
+    }
+
+    >.main-middle {
+        height: 100%;
+        width: 100vh;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    >.main-right {
+        height: 100%;
+        width: 0;
+    }
+}
+

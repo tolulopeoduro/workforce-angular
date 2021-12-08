@@ -4,7 +4,7 @@
 }
 .picture-box {
     box-sizing: border-box;
-    height: 300px;
+    height: 320px;
     width: inherit;
     display: flex;
     justify-content: center;
@@ -67,5 +67,26 @@
         font-weight: bold;
         font-size: large;
         margin-top: 12px;   
+    }
+}
+
+.follow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40px;
+    margin-top: 12px;
+
+    >button {
+        border: 1px solid #0A1E46;
+        background-color: #0A1E46;
+        color: #fff;
+        border-radius: 4px;
+    }
+
+    .following {
+        border: 1px solid #919090;
+        background-color: #DFE1E6;
+        color: #000;
     }
 }

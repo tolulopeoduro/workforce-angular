@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FullpostComponent implements OnInit {
 
-  constructor(private router : Router , private http : HttpService) { }
+  constructor(private router : Router , private http : HttpService , private titleService : Title) { }
 
   postData : any = null;
   author : any = null;
@@ -21,7 +22,7 @@ export class FullpostComponent implements OnInit {
     this.http.getRequest(`${environment.apiUrl}/post/${this.router.url.split("/")[2]}`)
     .subscribe(res => {
       this.postData = res.data[0]
-      console.log(this.postData)
+      this.titleService.setTitle(this.postData.title)
       this.http.getRequest(`${environment.apiUrl}/users/${this.postData.userId}`)
       .subscribe(response  => {
         this.author = response.data;

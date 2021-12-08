@@ -1,5 +1,5 @@
 <app-nav></app-nav>
-<div class="main-body">
+<div [ngClass]="fullpage ? 'full-body' : 'main-body' ">
     <div class="main-left">
         <app-user-box></app-user-box>
     </div>

@@ -1,13 +1,19 @@
 <div class = "picture-box">
     <div *ngIf="imgUrl;else noImg" class="picture" style="background-image: url({{imgUrl}});">
-        <p *ngIf="editable" (click)="handleClick()" >CHANGE<br><br>PROFILE<br><br>PHOTO</p>
-        <div *ngIf="!editable">+</div>
+        <div *ngIf="editable" (click)="handleClick()">+</div>
     </div>
     <ng-template #noImg>
         <div class="picture" style="background-image: url(https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png);">
-            <p *ngIf="editable" (click)="handleClick()" >CHANGE<br><br>PROFILE<br><br>PHOTO</p>
-            <div *ngIf="!editable">+</div>
+            <div *ngIf="editable" (click)="handleClick()">+</div>
         </div>
     </ng-template>
     <h1>{{name}}</h1>
+
+    <div class="follow" *ngIf="!editable">
+        <button class="following" *ngIf="following;else follow" (click)="toggleFollow()">FOLLOWING <i class="far fa-check-circle"></i></button>
+        <ng-template #follow>
+            <button (click)="toggleFollow()">FOLLOW</button>
+        </ng-template>
+        <p *ngIf="isAFollower">follows you</p>
+    </div>
 </div>
