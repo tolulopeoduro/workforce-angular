@@ -22,6 +22,9 @@ import { UserProfileComponent } from 'src/app/components/user-profile/user-profi
 import { ProfileUpdateComponent } from 'src/app/profile-update/profile-update.component';
 import { ImgDialogComponent } from 'src/app/compoents/img-dialog/img-dialog.component';
 import { ImageCropperComponent, ImageCropperModule } from 'ngx-image-cropper';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { CommentListComponent } from 'src/app/containers/fullpost/comment-list/comment-list.component';
+import { CommentComponent } from 'src/app/containers/fullpost/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -43,12 +46,13 @@ import { ImageCropperComponent, ImageCropperModule } from 'ngx-image-cropper';
     UserProfileComponent,
     ProfileUpdateComponent,
     ImgDialogComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
     FormsModule,
-    ImageCropperModule
+    ImageCropperModule,
   ]
 })
 export class MainModule { }

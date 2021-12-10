@@ -17,5 +17,19 @@
         <br>
         <app-element *ngFor="let element of postData.content" [element]="element"></app-element>
     </div>
+    <form class="interactions">
+        <div (click)="like()" [classList]="liked ? 'likes liked' : 'likes' ">
+            <i class="fas fa-thumbs-up fa-3x"></i>
+            <span>{{totalLikes}}</span>
+        </div>
+        <textarea name="comment" [(ngModel)]="comment" [@FullComment]="commentState" (focus)="toggleComments()"></textarea>
+        <div class="buttons">
+            <button [@showCancel]="commentState" class="cancel-comment" (click)="toggleComments()">Cancel</button>
+            <button type="submit" (click)="submitComment()">Add Comment</button>
+        </div>
+    </form>
+    <div class="comment-list">
+        <app-comment *ngFor="let comment of postData.comments" [comment]="comment" ></app-comment>
+    </div>
     <app-prompt *ngIf="deleteButtonActive" (accept)="deletePost()" (decline)="ToggleDeleteDialog(false)" ></app-prompt>
 </div>

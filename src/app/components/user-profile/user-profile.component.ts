@@ -41,7 +41,6 @@ export class UserProfileComponent implements OnInit {
 
   follow = () => {
     const data = {userId : localStorage.getItem('id')}
-    console.log(this.router.url.split('/')[2])
     if (this.following === true) {
       this.http.postRequest(`${environment.apiUrl}/users/unfollow/${this.router.url.split('/')[2]}` , data , {headers : {Authorization : localStorage.getItem('token')}})
       .subscribe((res) => {
