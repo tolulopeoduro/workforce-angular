@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { setData } from 'src/app/reducers/userActions';
 import { HttpService } from 'src/app/services/http/http.service';
@@ -15,10 +16,11 @@ export class HomeComponent implements OnInit {
   readonly userId : any = localStorage.getItem('id')
 
 
-  constructor(private http : HttpService , private store : Store<{user : any}>) { }
+  constructor(private http : HttpService , private store : Store<{user : any}> , private titleService : Title) { }
   
 
   ngOnInit(): void {
+    this.titleService.setTitle("Workforce")
     this.http.getRequest(`${environment.apiUrl}/post`)
     .subscribe(res => {
       this.posts = res.data

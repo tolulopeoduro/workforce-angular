@@ -9,6 +9,9 @@ import {HttpClientModule} from "@angular/common/http"
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/userReducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommentListComponent } from './containers/fullpost/comment-list/comment-list.component';
+import { CommentComponent } from './containers/fullpost/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { userReducer } from './reducers/userReducer';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot({user : userReducer})
   ],
   providers: [],

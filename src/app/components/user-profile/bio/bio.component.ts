@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BioComponent implements OnInit {
 
   @Input() user : any = null;
-  @Input() posts : any = null
+  @Input() totalPosts : any = null
 
   constructor() { }
 
