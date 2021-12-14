@@ -1,14 +1,15 @@
 <div *ngIf="!loading" class = "editor">
   <input class ="input-title" [(ngModel)]="title" name = "title" type="text" placeholder="Title">
-  <app-element *ngFor="let element of elements; let i = index" [element]="element" (update)="update($event)" [i] = "i" [editing]="editing" >
+  <app-element *ngFor="let element of elements; let i = index" [element]="element"
+   (update)="update($event)" [i] = "i" [editing]="editing" (append)="addNew($event)" (clear)="delete($event)" >
   </app-element>
   
   <div class = "new-element">
     <button><img (click)="toggle()" src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637165894/workforce-v2/icons8-plus-math-90.png" height="25px"></button>
     <div class = "element-option-div" *ngIf="newElementOpt">
-      <button  (click)="add('header')"><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637163040/workforce-v2/icons8-h-100.png" height="20px"></button>
-      <button  (click)="add('sub-header')"><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637163040/workforce-v2/icons8-h-100.png" height="12px"></button>
-      <button  (click)="add('paragraph')">p</button>
+      <button  (click)="add('header' , '')"><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637163040/workforce-v2/icons8-h-100.png" height="20px"></button>
+      <button  (click)="add('sub-header' , '')"><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637163040/workforce-v2/icons8-h-100.png" height="12px"></button>
+      <button  (click)="add('paragraph' , '')">p</button>
     </div>
   </div>
 

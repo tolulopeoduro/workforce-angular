@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ElementComponent } from 'src/app/components/element/element.component';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
+import * as $ from 'jquery'
+
 
 @Component({
   selector: 'app-newpost',
@@ -10,6 +12,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./newpost.component.scss']
 })
 export class NewpostComponent implements OnInit {
+
+ 
 
   ngOnInit(): void {
     if (this.router.url.split('/').pop() === 'edit') {
@@ -33,6 +37,12 @@ export class NewpostComponent implements OnInit {
       ];
       this.loading = false
     }
+    //setTimeout(() => {
+    //  const el =document.getElementById(`element${0}`)
+    //  console.log(el?.textContent?.length)
+    //  el?.focus()
+    //} , 1000)
+    $(document).ready(() => console.log('hello'))
   }
 
   constructor (private http : HttpService , private router : Router) {
@@ -57,7 +67,7 @@ export class NewpostComponent implements OnInit {
     console.log(this.elements[0].content)
   }
 
-  add = (type : string) => {
+  add = (type : string , content : string) => {
     const data = {
       id : this.elements.length,
       type : type,
@@ -68,6 +78,7 @@ export class NewpostComponent implements OnInit {
     this.elements =ar
     this.newElementOpt = false
   }
+
 
   showAtt = () => this.options = true
 
@@ -99,6 +110,40 @@ export class NewpostComponent implements OnInit {
     this.http.putRequest(`${environment.apiUrl}/post/${data.id}` , data , {}).subscribe(res => {
       console.log(res)
       this.router.navigate([`/post/${this.postData.id}`])
+    })
+  }
+
+  delete = (data : any) => {
+    const {id} = data
+    const content1 = this.elements[id-1].content
+    const content2 = this.elements[id].content
+    if (id > 0) {
+      const type = this.elements[id-1].type
+      this.elements.splice(id - 1 , 2 , {
+        type : type,
+        content : content1+content2,
+        class : ''
+      })
+    }
+    setTimeout(() => {
+      const el =document.getElementById(`element${id - 1}`)
+      if (el) {
+        el.textContent = content1+content2
+        console.log(el.textContent)
+        el.focus()
+        window.getSelection()?.setPosition(el.childNodes[0] , content1.length)
+      }
+    } , 0)
+  }
+
+  addNew = (data : any) => {
+    const {id , type , current , added} = data
+    const el =document.getElementById(`element${id}`)
+    el?.focus()
+    this.elements.splice(id , 0 , {
+      type : type,
+      content : added,
+      class : ''
     })
   }
 
