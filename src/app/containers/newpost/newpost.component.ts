@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ElementComponent } from 'src/app/components/element/element.component';
 import { HttpService } from 'src/app/services/http/http.service';
@@ -26,6 +27,7 @@ export class NewpostComponent implements OnInit {
         this.title = res.data[0].title
         this.elements = res.data[0].content;
         this.loading = false
+        this.titleService.setTitle(`Editor - ${res.data[0].title}`)
       }) 
     } else {
       this.elements = [
@@ -36,6 +38,7 @@ export class NewpostComponent implements OnInit {
         },
       ];
       this.loading = false
+      this.titleService.setTitle('Editor')
     }
     //setTimeout(() => {
     //  const el =document.getElementById(`element${0}`)
@@ -45,7 +48,7 @@ export class NewpostComponent implements OnInit {
     $(document).ready(() => console.log('hello'))
   }
 
-  constructor (private http : HttpService , private router : Router) {
+  constructor (private http : HttpService , private router : Router , private titleService : Title ) {
 
   }
 
@@ -109,7 +112,7 @@ export class NewpostComponent implements OnInit {
     }
     this.http.putRequest(`${environment.apiUrl}/post/${data.id}` , data , {}).subscribe(res => {
       console.log(res)
-      this.router.navigate([`/post/${this.postData.id}`])
+      this.router.navigate([`/post/${this.postData._id}`])
     })
   }
 

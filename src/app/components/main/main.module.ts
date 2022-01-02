@@ -24,6 +24,10 @@ import { ImgDialogComponent } from 'src/app/compoents/img-dialog/img-dialog.comp
 import { ImageCropperComponent, ImageCropperModule } from 'ngx-image-cropper';
 import { EditorComponent } from '../editor/editor.component';
 import { PublishComponent } from '../publish/publish.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { CommentListComponent } from 'src/app/containers/fullpost/comment-list/comment-list.component';
+import { CommentComponent } from 'src/app/containers/fullpost/comment/comment.component';
+import { AuthorComponent } from '../author/author.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,9 @@ import { PublishComponent } from '../publish/publish.component';
     ProfileUpdateComponent,
     ImgDialogComponent,
     EditorComponent,
-    PublishComponent
+    PublishComponent,
+    CommentComponent,
+    AuthorComponent
   ],
   imports: [
     CommonModule,

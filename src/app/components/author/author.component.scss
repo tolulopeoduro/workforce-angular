@@ -1,0 +1,22 @@
+.author {
+    height: 60px;
+    display: flex;
+    margin-top: 8px;
+    cursor: pointer;
+
+    >img {
+        border-radius: 50%;
+        height: 40px;
+        align-self: center;
+    }
+
+    >div {
+        >p:nth-child(1) {
+            font-weight: bolder;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: 12px;
+    }
+}
