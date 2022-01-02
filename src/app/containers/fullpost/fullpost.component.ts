@@ -3,7 +3,9 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
+import blocksToHtml from 'editorjs-render'
 import { trigger , state , style , animate , transition } from '@angular/animations';
+
 
 @Component({
   selector: 'app-fullpost',
@@ -51,6 +53,7 @@ export class FullpostComponent implements OnInit {
   author : any = null;
   deleteButtonActive : boolean = false;
   showActions : any = null;
+  postHTML : any
   comment : string = "";
   liked : boolean = false;
   totalLikes : number = 0;
@@ -59,14 +62,11 @@ export class FullpostComponent implements OnInit {
     this.http.getRequest(`${environment.apiUrl}/post/${this.router.url.split("/")[2]}`)
     .subscribe(res => {
       this.postData = res.data[0]
+      this.postHTML = blocksToHtml(this.postData.content.blocks)
       this.titleService.setTitle(this.postData.title)
       this.liked = this.postData.likes.includes(localStorage.getItem('id'))
       this.totalLikes = this.postData.likes.length
-      this.http.getRequest(`${environment.apiUrl}/users/${this.postData.userId}`)
-      .subscribe(response  => {
-        this.author = response.data;
-        this.showActions = this.author._id === localStorage.getItem('id')
-      })
+      
     })
   }
 

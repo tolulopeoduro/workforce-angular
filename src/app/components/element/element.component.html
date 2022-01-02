@@ -1,12 +1,5 @@
 <div>
     <h1 *ngIf="element.type === 'header' && !editing" ngClass="header">{{element.content}}</h1>
-    <h3 *ngIf="element.type === 'sub-header' && !editing" ngClass="sub-header" >{{element.content}}</h3>
-    <p *ngIf="element.type === 'paragraph' && !editing " ngClass="paragraph" >{{element.content}}</p>
-
-    <div #myInput id = "element{{i}}" contenteditable="true" name = "element.{{i}}.content" 
-    (paste)="handlePaste($event)"   (contextmenu)="showOptions($event)" 
-    (keydown)="handleChange($event)" (keyup)="modify($event)" ngDefaultControl (focusout)="handleChange($event)"  
-    [(ngModel)]="element.content" *ngIf="editing" ngClass="{{element.type}}">{{element.cont}}</div>
-
-    <app-attributes *ngIf="options" [element] ="element" (hide)="hideOptions()"></app-attributes>
+    <h3 class="ce-header" [innerHTML]="element.data.text" *ngIf="element.type === 'sub-header' && !editing" ngClass="sub-header" ></h3>
+    <div [innerHTML]="element.data.text" *ngIf="element.type === 'paragraph' && !editing " ngClass="paragraph" ></div>
 </div>

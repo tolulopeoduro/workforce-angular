@@ -2,20 +2,14 @@
     <div *ngIf="postData" class="post">
         <h1 class="header">{{postData.title}}</h1>
         <div class="post_details">
-            <div class="author" routerLink="/user/{{author._id}}">
-                    <img src="{{author.imgUrl || 'https://res.cloudinary.com/dtuafcbbd/image/upload/v1636811647/workforce-v2/149071.png'}}"/>
-                <div>
-                    <p><a href=""></a>{{author.first_name + " " + author.last_name}}</p>
-                    <p>{{postData.date}}</p>
-                </div>
-            </div>
+            <app-author [showActions]="showActions" [user]="postData.userId" [date]="postData.date"></app-author>
             <div *ngIf="showActions" class = "actions">
                 <button routerLink='/post/{{postData._id}}/edit'><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637579600/workforce-v2/edit.png"></button>
                 <button (click)="ToggleDeleteDialog(true)" ><img src="https://res.cloudinary.com/dtuafcbbd/image/upload/v1637580249/workforce-v2/bin.png"></button>
             </div>
         </div>
         <br>
-        <app-element *ngFor="let element of postData.content" [element]="element"></app-element>
+        <div [innerHTML]="postHTML"></div>
     </div>
     <form class="interactions">
         <div (click)="like()" [classList]="liked ? 'likes liked' : 'likes' ">
@@ -28,7 +22,7 @@
             <button type="submit" (click)="submitComment()">Add Comment</button>
         </div>
     </form>
-    <div class="comment-list">
+    <div *ngIf="postData.comments" class="comment-list">
         <app-comment *ngFor="let comment of postData.comments" [comment]="comment" ></app-comment>
     </div>
     <app-prompt *ngIf="deleteButtonActive" (accept)="deletePost()" (decline)="ToggleDeleteDialog(false)" ></app-prompt>

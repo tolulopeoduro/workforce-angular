@@ -12,6 +12,7 @@ import { userReducer } from './reducers/userReducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommentListComponent } from './containers/fullpost/comment-list/comment-list.component';
 import { CommentComponent } from './containers/fullpost/comment/comment.component';
+import { AuthorComponent } from './components/author/author.component';
 
 @NgModule({
   declarations: [

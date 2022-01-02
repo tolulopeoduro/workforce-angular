@@ -10,8 +10,8 @@
     <div routerLink = {{link}}>
         <img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1638605736/workforce-v2/218-2182114_blog-post-icon-newsletter-icon-png.jpg" height="60px" width="80px">
         <div>
-            <h3>{{article.title | truncate : 10}}</h3>
-            <p>{{article.content[0].content | truncate : 16 }}</p>
+            <h3>{{article.preview.title | truncate : 10}}</h3>
+            <p>{{article.preview.subtitle | truncate : 16 }}</p>
         </div>
     </div>
     <div>
