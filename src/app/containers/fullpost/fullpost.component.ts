@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http/http.service';
 import { environment } from 'src/environments/environment';
+import blocksToHtml from 'editorjs-render'
 
 @Component({
   selector: 'app-fullpost',
@@ -16,12 +17,13 @@ export class FullpostComponent implements OnInit {
   author : any = null;
   deleteButtonActive : boolean = false;
   showActions : any = null;
+  postHTML : any
   
   ngOnInit(): void {
     this.http.getRequest(`${environment.apiUrl}/post/${this.router.url.split("/")[2]}`)
     .subscribe(res => {
       this.postData = res.data[0]
-      console.log(this.postData)
+      this.postHTML = blocksToHtml(this.postData.content.blocks)
       this.http.getRequest(`${environment.apiUrl}/users/${this.postData.userId}`)
       .subscribe(response  => {
         this.author = response.data;

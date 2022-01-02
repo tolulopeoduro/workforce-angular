@@ -1,0 +1,23 @@
+<div class="editor-page">
+    <div class="header">
+        <input type="text" class="title" placeholder="Title" [(ngModel)]="title"/>
+        <button class="publish" (click)="showOptions()">Publish</button>
+    </div>
+    <div id = "editor"></div>
+    <div *ngIf="moreOptions" class="backdrop">
+        <div class="prompt">
+            <div>
+                <h2 class="head">Preview</h2>
+            </div>
+            <div class="settings">
+                <input type="text" [(ngModel)]="preview_title" placeholder="Preview Title">
+                <input type="text" [(ngModel)]="preview_subtitle" placeholder="Preview sub-title">
+                <div class="buttons">
+                    <button (click)="publish()">Publish</button>
+                    <button class="cancel" (click)="hideOptions()">Cancel</button>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>

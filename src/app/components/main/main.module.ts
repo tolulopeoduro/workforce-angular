@@ -22,6 +22,8 @@ import { UserProfileComponent } from 'src/app/components/user-profile/user-profi
 import { ProfileUpdateComponent } from 'src/app/profile-update/profile-update.component';
 import { ImgDialogComponent } from 'src/app/compoents/img-dialog/img-dialog.component';
 import { ImageCropperComponent, ImageCropperModule } from 'ngx-image-cropper';
+import { EditorComponent } from '../editor/editor.component';
+import { PublishComponent } from '../publish/publish.component';
 
 @NgModule({
   declarations: [
@@ -43,12 +45,14 @@ import { ImageCropperComponent, ImageCropperModule } from 'ngx-image-cropper';
     UserProfileComponent,
     ProfileUpdateComponent,
     ImgDialogComponent,
+    EditorComponent,
+    PublishComponent
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
     FormsModule,
-    ImageCropperModule
+    ImageCropperModule,
   ]
 })
 export class MainModule { }
