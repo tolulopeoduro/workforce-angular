@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import EditorJs from '@editorjs/editorjs'
+import EditorJs from './editorjs'
 import {editorConfig} from './editorconfig'
 import { HttpService } from 'src/app/services/http/http.service';
 import { Router } from '@angular/router';
