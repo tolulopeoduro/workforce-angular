@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
     .subscribe((response) => {
       localStorage.setItem("id" , response.userId)
       localStorage.setItem("token" , response.token)
-      
       this.http.getRequest(`${environment.apiUrl}/users/${localStorage.getItem('id')}`)
       .subscribe(res => this.store.dispatch(setData(res)))
       

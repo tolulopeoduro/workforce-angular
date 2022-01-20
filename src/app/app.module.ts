@@ -13,12 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommentListComponent } from './containers/fullpost/comment-list/comment-list.component';
 import { CommentComponent } from './containers/fullpost/comment/comment.component';
 import { AuthorComponent } from './components/author/author.component';
+import { NavDropdownComponent } from './components/nav/nav-dropdown/nav-dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

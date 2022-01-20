@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class MainComponent implements OnInit {
 
   fullpage : boolean = false
+  dropdownActive : boolean = false
 
   constructor(private router : Router , private http : HttpClient , private store : Store<{user : any}> , private activatedRoute : ActivatedRoute) {
     this.router.events.subscribe(params => {
@@ -25,6 +26,10 @@ export class MainComponent implements OnInit {
       this.http.get(`${environment.apiUrl}/users/${localStorage.getItem('id')}`)
       .subscribe(res => this.store.dispatch(setData(res)))
     }
+  }
+
+  toggleDropdown = () => {
+    this.dropdownActive = !this.dropdownActive
   }
 
 }

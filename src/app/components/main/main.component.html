@@ -1,5 +1,6 @@
-<app-nav></app-nav>
-<div [ngClass]="fullpage ? 'full-body' : 'main-body' ">
+<app-nav (toggleDropdown)="toggleDropdown()" ></app-nav>
+<app-nav-dropdown (closeDropdown)="toggleDropdown()" *ngIf="dropdownActive"></app-nav-dropdown>
+<div [ngClass]="fullpage ? 'full-body' : 'main-body'">
     <div class="main-left">
         <app-user-box></app-user-box>
     </div>

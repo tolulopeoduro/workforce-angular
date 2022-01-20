@@ -4,29 +4,32 @@ import { Store } from '@ngrx/store';
 import { clearData } from 'src/app/reducers/userActions';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  selector: 'app-nav-dropdown',
+  templateUrl: './nav-dropdown.component.html',
+  styleUrls: ['./nav-dropdown.component.scss']
 })
-export class NavComponent implements OnInit {
+export class NavDropdownComponent implements OnInit {
 
-  @Output() toggleDropdown : EventEmitter<void>
+  @Output() closeDropdown : EventEmitter<void>
 
   constructor(private router : Router , private store : Store<{user : any}>) {
-    this.toggleDropdown = new EventEmitter<void>()
+    this.closeDropdown = new EventEmitter<void>()
   }
 
   readonly userId : any = localStorage.getItem('id')
 
-  ngOnInit(): void {
+  handleDropdownClose = () => {
+    this.closeDropdown.emit()
   }
 
-  signOut = () => {
+  logOut = () => {
     localStorage.clear()
     this.store.dispatch(clearData())
     this.router.navigate(['/'])
+    this.closeDropdown.emit()
   }
 
-  handleToggle = () => this.toggleDropdown.emit()
+  ngOnInit(): void {
+  }
 
 }

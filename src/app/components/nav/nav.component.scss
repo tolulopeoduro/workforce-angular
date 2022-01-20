@@ -82,4 +82,30 @@ i {
     justify-content: baseline;
     align-items: center;
     padding-right: 20px;
+
+    .logout {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 800px) {
+
+    :host {
+        justify-content: space-between;
+    }
+
+    .nav-right {
+        .logout {
+            display: none;
+        }
+
+        .dropdown-button {
+            display: block;
+        }
+    }
+
+    .nav-middle {
+        display: none;
+    }
 }
