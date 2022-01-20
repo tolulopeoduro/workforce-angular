@@ -10,7 +10,9 @@
                 Password
                 <input type="password" name = "password" [(ngModel)]="password" >
             </label>
-            <a href="/login">Forgot Password?</a>
+            <div class="forgot_password">
+                <a href="/login">Forgot Password?</a>
+            </div>
             <button *ngIf="loading===false" (click)="login()">LOGIN</button>
             <button *ngIf="loading===true"><i class="fas fa-compact-disc fa-spin" disabled></i></button>
         </form>

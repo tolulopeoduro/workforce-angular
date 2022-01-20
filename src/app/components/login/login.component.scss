@@ -12,22 +12,21 @@ button {
 .login_fullbody {
     background-color: #F6F4FA;
     height: 100%;
-    width: 100%;
+    width: 100vw;
     overflow: auto;
-    display: flex;
+    display: inline-flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 .login_form{
     width : 800px;
     min-height: 380px;
     box-sizing: border-box;
-    padding: 15px 0px;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0px 2px 3px rgb(179, 179, 179);
-    align-self:baseline;    
-    margin-top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -77,9 +76,9 @@ button {
                 display: block;
                 align-self: baseline;
                 margin-bottom: 30px;
-                box-sizing: border-box;
                 text-transform: uppercase;
-                width: 450px;
+                box-sizing: border-box;
+                width: 80%;
                 font-size: 18px;
 
                 >input {
@@ -97,15 +96,27 @@ button {
                 }
             }
 
-            >a {
-                font-size: 18px;
+            > .forgot_password {
+                margin : 0px auto;
+                color : #000000;
                 display: block;
-                text-align: left;
-                color : #52A6CC;
-                align-self: center;
-                width: 450px;
-                margin-top: -24px ;
+                align-self: baseline;
+                margin-bottom: 30px;
+                box-sizing: border-box;
+                width: 80%;
+                font-size: 18px;
+                
+                >a {
+                    font-size: 18px;
+                    display: block;
+                    text-align: left;
+                    color : #52A6CC;
+                    align-self: center;
+                    width: 80%;
+                    margin-top: -24px ;
+                }
             }
+
 
             > button {
                 background-color: #122973;
@@ -123,3 +134,17 @@ button {
     font-size: 18px;
     margin-top: 8px;
 }
+
+@media only screen and (max-width: 800px) {
+    .login_fullbody {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .login_form {
+        width: 500px;
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+    }
+  }

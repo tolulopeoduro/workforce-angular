@@ -1,10 +1,10 @@
 :host {
     display: flex;
     flex-direction: column;
-    height: 100px;
+    
     justify-content: space-between;
     padding-top: 10px;
-    padding-left: 20px;
+    padding: 10px 20px;
     box-shadow: 1px 1px 5px black;
     position: absolute;
     right: 0;
@@ -16,13 +16,18 @@
 
 
 a {
-    height: 30px;
-
-    :hover {
-        background-color: rgb(193, 193, 193);
-    }
+    height: 40px;
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 4px;
 }
 
+a:hover {
+    background-color: rgb(193, 193, 193);
+}
 
 
 @media only screen and (min-width: 800px) {
