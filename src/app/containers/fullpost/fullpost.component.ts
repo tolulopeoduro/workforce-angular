@@ -114,7 +114,9 @@ export class FullpostComponent implements OnInit {
       .subscribe((res) => {
         this.comment = ""
         this.showFullComment = false
-        this.postData.comments.unshift(data)
+        const allC = [...this.postData.comments]
+        allC.push(data)
+        this.postData.comments = allC
       })
   }
 

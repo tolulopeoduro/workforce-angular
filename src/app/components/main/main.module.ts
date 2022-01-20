@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { CommentListComponent } from 'src/app/containers/fullpost/comment-list/comment-list.component';
 import { CommentComponent } from 'src/app/containers/fullpost/comment/comment.component';
 import { AuthorComponent } from '../author/author.component';
+import { NavDropdownComponent } from '../nav/nav-dropdown/nav-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AuthorComponent } from '../author/author.component';
     EditorComponent,
     PublishComponent,
     CommentComponent,
-    AuthorComponent
+    AuthorComponent,
+    NavDropdownComponent
   ],
   imports: [
     CommonModule,

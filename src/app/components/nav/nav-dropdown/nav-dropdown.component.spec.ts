@@ -1,23 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PublishOptionsComponent } from './publish-options.component';
+import { NavDropdownComponent } from './nav-dropdown.component';
 
-describe('PublishOptionsComponent', () => {
-  let component: PublishOptionsComponent;
-  let fixture: ComponentFixture<PublishOptionsComponent>;
-
-
-
+describe('NavDropdownComponent', () => {
+  let component: NavDropdownComponent;
+  let fixture: ComponentFixture<NavDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PublishOptionsComponent ]
+      declarations: [ NavDropdownComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PublishOptionsComponent);
+    fixture = TestBed.createComponent(NavDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

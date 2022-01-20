@@ -3,12 +3,15 @@
         <h1 class="header">{{postData.title}}</h1>
         <div class="post_details">
             <app-author [showActions]="showActions" [user]="postData.userId" [date]="postData.date"></app-author>
-            <div *ngIf="showActions" class = "actions">
+            <div class = "actions">
                 <button routerLink='/post/{{postData._id}}/edit'><img src = "https://res.cloudinary.com/dtuafcbbd/image/upload/v1637579600/workforce-v2/edit.png"></button>
                 <button (click)="ToggleDeleteDialog(true)" ><img src="https://res.cloudinary.com/dtuafcbbd/image/upload/v1637580249/workforce-v2/bin.png"></button>
             </div>
         </div>
         <br>
+        <div class="post_image">
+            <img src={{postData.imgUrl}} />
+        </div>
         <div [innerHTML]="postHTML"></div>
     </div>
     <form class="interactions">

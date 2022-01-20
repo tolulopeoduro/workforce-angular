@@ -23,7 +23,6 @@ export class NewpostComponent implements OnInit {
       .subscribe(res => {
         this.loading = true
         this.postData = res.data[0]
-        console.log(this.postData)
         this.title = res.data[0].title
         this.elements = res.data[0].content;
         this.loading = false
@@ -40,12 +39,6 @@ export class NewpostComponent implements OnInit {
       this.loading = false
       this.titleService.setTitle('Editor')
     }
-    //setTimeout(() => {
-    //  const el =document.getElementById(`element${0}`)
-    //  console.log(el?.textContent?.length)
-    //  el?.focus()
-    //} , 1000)
-    $(document).ready(() => console.log('hello'))
   }
 
   constructor (private http : HttpService , private router : Router , private titleService : Title ) {
@@ -67,7 +60,6 @@ export class NewpostComponent implements OnInit {
 
   toggle = () => {
     this.newElementOpt === true ? this.newElementOpt = false : this.newElementOpt = true
-    console.log(this.elements[0].content)
   }
 
   add = (type : string , content : string) => {
@@ -111,7 +103,6 @@ export class NewpostComponent implements OnInit {
       updated : new Date().toLocaleDateString
     }
     this.http.putRequest(`${environment.apiUrl}/post/${data.id}` , data , {}).subscribe(res => {
-      console.log(res)
       this.router.navigate([`/post/${this.postData._id}`])
     })
   }
@@ -132,7 +123,6 @@ export class NewpostComponent implements OnInit {
       const el =document.getElementById(`element${id - 1}`)
       if (el) {
         el.textContent = content1+content2
-        console.log(el.textContent)
         el.focus()
         window.getSelection()?.setPosition(el.childNodes[0] , content1.length)
       }
