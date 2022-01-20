@@ -10,6 +10,23 @@
                 <h2 class="head">Preview</h2>
             </div>
             <div class="settings">
+                <div *ngIf="file" class="cropper">
+                    <image-cropper 
+                    [imageChangedEvent]="imgChangeEvt" 
+                    [maintainAspectRatio]="true" 
+                    [aspectRatio]="4 / 3"
+                    [resizeToWidth]="480" 
+                    format="png" 
+                    (imageCropped)="cropImg($event)" 
+                    (imageLoaded)="imgLoad()"
+                    (cropperReady)="initCropper()" 
+                    (loadImageFailed)="imgFailed()">
+                  </image-cropper>
+                </div>
+                <div class="col-md-12">
+                    <input type="file" (change)="onFileChange($event)" />
+                    <button>UPLOAD</button>
+                  </div>   
                 <input type="text" [(ngModel)]="preview_title" placeholder="Preview Title">
                 <input type="text" [(ngModel)]="preview_subtitle" placeholder="Preview sub-title">
                 <div class="buttons">

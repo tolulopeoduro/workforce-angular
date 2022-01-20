@@ -54,7 +54,6 @@ export class ImgDialogComponent implements OnInit {
     formData.append('file' , this.file , `${localStorage.getItem('id')}_profile`);
     this.http.postRequest(`${environment.apiUrl}/users/update` , formData , {headers : {Authorization : localStorage.getItem('token')}})
     .subscribe(res => {
-      console.log(res)
       this.uploaded.emit()
     })
   }
