@@ -14,12 +14,13 @@ import { CommentListComponent } from './containers/fullpost/comment-list/comment
 import { CommentComponent } from './containers/fullpost/comment/comment.component';
 import { AuthorComponent } from './components/author/author.component';
 import { NavDropdownComponent } from './components/nav/nav-dropdown/nav-dropdown.component';
+import { NameDialogComponent } from './components/name-dialog/name-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

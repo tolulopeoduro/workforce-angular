@@ -20,12 +20,16 @@ export class UserProfileComponent implements OnInit {
   userImg : any = null;
   isMainUser : boolean = localStorage.getItem('id') === this.router.url.split('/')[2] || this.router.url.split('/')[1] === 'my-profile'
   imgChangeDialog : boolean = false
+  nameChangeDialog : boolean = false
   loading : boolean = true
   showDialog = () => this.imgChangeDialog = true
   hideDialog = () => this.imgChangeDialog = false
   userId : any = null;
   totalPosts : any = null;
   isAFollower : any = null;
+
+  showNameForm = () => this.nameChangeDialog = true
+  hideNameForm = () => this.nameChangeDialog = false
   
   constructor
   (private http : HttpService , private router : Router , private activatedRoute : ActivatedRoute , private store : Store<{user : any}> , private titleService : Title) {
@@ -72,7 +76,6 @@ export class UserProfileComponent implements OnInit {
       }
 
       this.following = response.data.followers.includes(localStorage.getItem('id'))
-      this.userName = `${this.userData.first_name + " " + this.userData.last_name}`
       this.userImg = response.data.imgUrl
       this.titleService.setTitle(`${response.data.first_name} ${response.data.last_name} - Workforce`)
       this.isAFollower = this.store.select('user').subscribe(res => {

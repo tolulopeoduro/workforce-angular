@@ -1,0 +1,64 @@
+:host {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+    > div {
+        background-color: #fff;
+        height: 60px;
+        width: 480px;
+        display: flex;
+        justify-content: space-between;
+        
+        flex-direction: row;
+        border-radius: 12px;
+        padding-top: 0px;
+
+        >input {
+            flex: auto;
+            height: 100%;
+            outline: none;
+            border: none;
+            border-radius: 12px 0px 0px 12px;
+            padding-left: 20px;
+        }
+    }
+
+}
+
+.options {
+    width: 30px;
+    border-radius: 0px 12px 12px 0px;
+    > button {
+        width: 100%;
+        height: 30px;
+        border: none;
+    }
+    
+    >button:nth-child(1) {
+        background-color: red;
+        border-radius: 0px 12px 0px 0px;
+        color: #fff;
+    }
+    
+    >button:nth-child(2) {
+        background-color: #21af1c;
+        border-radius: 0px 0px 12px 0px;
+        color: #fff;
+    }
+}
+    
+@media only screen and (max-width: 800px) {
+    :host > div {
+        width: 95%;
+        max-width: 480px;
+    }
+}

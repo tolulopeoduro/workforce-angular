@@ -16,8 +16,7 @@ export class SignupComponent implements OnInit {
   loading : boolean = false;
   error : any = null; 
   data = {
-    first_name : "",
-    last_name : "",
+    full_name : "",
     email : "",
     password : ""
   }

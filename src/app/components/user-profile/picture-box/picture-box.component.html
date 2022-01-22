@@ -7,7 +7,9 @@
             <div *ngIf="editable" (click)="handleClick()">+</div>
         </div>
     </ng-template>
-    <h1>{{name}}</h1>
+    <div class="user_name">
+        <h1>{{name}}</h1><i class="fas fa-pencil-alt"></i>
+    </div>
 
     <div class="follow" *ngIf="!editable">
         <button class="following" *ngIf="following;else follow" (click)="toggleFollow()">FOLLOWING <i class="far fa-check-circle"></i></button>

@@ -20,7 +20,7 @@ export class ImgDialogComponent implements OnInit {
     this.uploaded = new EventEmitter<void>()
    }
 
-  file : any = localStorage.getItem('id') + "_profile"
+  file : any = "null"
 
   ngOnInit(): void {
   }
