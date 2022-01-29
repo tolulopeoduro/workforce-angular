@@ -63,11 +63,6 @@
             border: 1px solid white;
         }
     }
-    h1 {
-        font-weight: bold;
-        font-size: large;
-        margin-top: 12px;   
-    }
 
     .follow {
         display: flex;
@@ -95,4 +90,21 @@
         }
     }
 
+}
+
+.user_name {
+
+    margin-top: 12px;   
+    display: flex;
+    align-items: center;
+    
+    >h1 {
+        font-weight: bold;
+        font-size: large;
+    }
+
+    >i {
+        margin-left: 4px;
+    }
+    
 }

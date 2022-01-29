@@ -20,7 +20,7 @@ export class ImgDialogComponent implements OnInit {
     this.uploaded = new EventEmitter<void>()
    }
 
-  file : any = localStorage.getItem('id') + "_profile"
+  file : any = "null"
 
   ngOnInit(): void {
   }
@@ -52,7 +52,7 @@ export class ImgDialogComponent implements OnInit {
     const formData = new FormData();
     formData.append('userId' , `${localStorage.getItem('id')}`)
     formData.append('file' , this.file , `${localStorage.getItem('id')}_profile`);
-    this.http.postRequest(`${environment.apiUrl}/users/update` , formData , {headers : {Authorization : localStorage.getItem('token')}})
+    this.http.postRequest(`${environment.apiUrl}/users/update/profile-picture` , formData , {headers : {Authorization : localStorage.getItem('token')}})
     .subscribe(res => {
       this.uploaded.emit()
     })

@@ -2,16 +2,10 @@
     <div class="login_form">
         <img src="https://res.cloudinary.com/dtuafcbbd/image/upload/v1634719839/workforce-v2/WORK_FORCE_LOGO.svg" alt="logo" class="logo">
         <form>
-            <div class = "input_group" (submit)="submit()">
-                <label>
-                    First Name
-                    <input name = "first_name" type = "text" [(ngModel)] = "data.first_name" required />
-                </label>
-                <label>
-                    Last Name
-                    <input name = "last_name" type = "text" [(ngModel)] = "data.last_name" required />
-                </label>
-            </div>
+            <label>
+                Full Name
+                <input name = "last_name" type = "text" [(ngModel)] = "data.full_name" required />
+            </label>
             <label>
                 Email
                 <input name = "email" type = "email" [(ngModel)] = "data.email" required />

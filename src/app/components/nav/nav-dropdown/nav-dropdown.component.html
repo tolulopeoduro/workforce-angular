@@ -1,3 +1,4 @@
 <a (click)="handleDropdownClose()" class="fas fa-home" routerLink="/"><i></i>&nbsp;Home</a>
-<a (click)="handleDropdownClose()" class="fas fa-user-circle" routerLink="{{userId ? '/my-profile' : '/login'}}"><i></i>&nbsp;My profile</a>
-<a (click)="logOut()" class="fas fa-sign-out-alt"><i></i>&nbsp;Log Out</a>
+<a *ngIf="userData" (click)="handleDropdownClose()" class="fas fa-user-circle" routerLink='/my-profile'><i></i>&nbsp;My profile</a>
+<a *ngIf="userData" (click)="logOut()" class="fas fa-sign-out-alt"><i></i>&nbsp;Log Out</a>
+<a *ngIf="!userData" routerLink="/login" class="fas fa-sign-in-alt"><i></i>&nbsp;Sign in</a>

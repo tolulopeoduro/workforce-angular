@@ -2,8 +2,8 @@
     <div>
         <div class="about">
             <div>
-                <h3>About {{user.first_name.split(' ')[0]}}</h3>
-                <p *ngIf="user.bio; else noBio">{{user.bio | truncate : 20}} <a type="button">more</a></p>
+                <h3>About {{user.full_name.split(' ')[0]}}</h3>
+                <p *ngIf="user.bio; else noBio">{{user.bio | truncate : 10}} <a type="button">more</a></p>
                 <ng-template #noBio>User has not added bio</ng-template>
             </div>
             <div class="followers-and-posts">

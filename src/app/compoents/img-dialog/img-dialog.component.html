@@ -1,5 +1,8 @@
 <div>
-    <div><button (click)="exit()">x</button></div>
+    <div><button (click)="exit()"><i class="fa fa-times"></i></button></div>
+    <div *ngIf="file === 'null'" class="placeholder">
+      <p>PLEASE ADD IMAGE</p>
+    </div>
     <div class="cropper">
         <image-cropper 
         [imageChangedEvent]="imgChangeEvt" 
@@ -14,7 +17,10 @@
       </image-cropper>
   </div>
   <div class="col-md-12">
-    <input type="file" (change)="onFileChange($event)" />
+    <label class="input">
+        <input type="file" (change)="onFileChange($event)" />
+        CHOOSE FILE
+    </label>
     <button (click)="submit()">UPLOAD</button>
   </div>
 

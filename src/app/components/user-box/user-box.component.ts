@@ -15,11 +15,12 @@ export class UserBoxComponent implements OnInit {
   userId : any = localStorage.getItem("id")
   userData : any = null
 
-  constructor(private http : HttpService , private store : Store<{user : any}>) { }
+  constructor(private http : HttpService , private store : Store<{user : any}>) {}
 
   ngOnInit(): void {
     this.store.select('user').subscribe(res => {
       this.userData = res.data
+      console.log(this.userData)
     })
   }
 

@@ -1,7 +1,9 @@
 <div *ngIf="!loading">
-    <app-picture-box [name]="userName" [editable]="isMainUser"[following]="following" [isAFollower]="isAFollower" (follow)="follow()" [imgUrl]="userImg" (show)="showDialog()"></app-picture-box>
+    <app-picture-box [name]="userData.full_name" [editable]="isMainUser"[following]="following" 
+    [isAFollower]="isAFollower" (follow)="follow()" [imgUrl]="userImg" (show)="showDialog()" (showNameEdit)="showNameForm()"></app-picture-box>
     <app-bio [user]="userData" [totalPosts]="totalPosts"></app-bio>
-    <app-img-dialog *ngIf="imgChangeDialog" (hide)="hideDialog()" (show)="showDialog()" (uploaded)="getData()"></app-img-dialog>
+    <app-img-dialog *ngIf="imgChangeDialog" (hide)="hideDialog()" (show)="showDialog()" (uploaded)="updateUI()"></app-img-dialog>
+    <app-name-dialog *ngIf="nameChangeDialog" (hide)="hideNameForm()" (uploaded)="updateUI()"  ></app-name-dialog>
     <app-article-link *ngFor="let item of posts" [article]="item"></app-article-link>
 </div>
 <app-spinner *ngIf="loading"></app-spinner>
