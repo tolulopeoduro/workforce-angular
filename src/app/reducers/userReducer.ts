@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store"
 import { clearData, setData } from "./userActions"
 
-const initialState : any = {data : {}}
+const initialState : any = {data : null}
 
 const _userReducer = createReducer(
     initialState,
@@ -14,7 +14,7 @@ const _userReducer = createReducer(
     on(clearData , (state: any) => {
         return {
             ...state,
-            data : {}
+            data : null
         }
     })
 )

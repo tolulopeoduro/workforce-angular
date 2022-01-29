@@ -3,7 +3,7 @@
     </div>
     <div class="nav-middle">
         <div class="search-bar">
-            <input name = "search" disabled>
+            <input name = "search">
             <i class="fas fa-search"></i>
         </div>
         <div class = "buttons">
@@ -13,6 +13,6 @@
         </div>
     </div>
     <div class="nav-right">
-        <i *ngIf="userId"  class="fas fa-sign-out-alt logout" (click)="signOut()"></i>
+        <i *ngIf="userData"  class="fas fa-sign-out-alt logout" (click)="signOut()"></i>
         <i class="fas fa-bars dropdown-button" (click)="handleToggle()" ></i>
     </div>

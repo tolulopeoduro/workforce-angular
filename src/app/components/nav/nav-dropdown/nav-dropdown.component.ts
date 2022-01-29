@@ -18,6 +18,8 @@ export class NavDropdownComponent implements OnInit {
 
   readonly userId : any = localStorage.getItem('id')
 
+  userData : any = null
+
   handleDropdownClose = () => {
     this.closeDropdown.emit()
   }
@@ -30,6 +32,9 @@ export class NavDropdownComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.select('user').subscribe(res => {
+      this.userData = res.data
+    })
   }
 
 }

@@ -78,9 +78,11 @@ export class UserProfileComponent implements OnInit {
       this.following = response.data.followers.includes(localStorage.getItem('id'))
       this.userImg = response.data.imgUrl
       this.titleService.setTitle(`${response.data.first_name} ${response.data.last_name} - Workforce`)
-      this.isAFollower = this.store.select('user').subscribe(res => {
-        this.isAFollower = res.data.followers.includes(this.router.url.split('/')[2])
+      this.store.select('user').subscribe(res => {
+      this.isAFollower = res.data.followers.includes(this.router.url.split('/')[2])
       })
+
+      console.log(this.isAFollower)
       
       setTimeout(()=> {
         this.http.getRequest(`${environment.apiUrl}/post/user/${this.userId}`)
@@ -88,12 +90,16 @@ export class UserProfileComponent implements OnInit {
           this.posts = response.data
           this.totalPosts = response.data.length
           this.loading = false;
-          this.imgChangeDialog = false;
         })
       } , 0)
 
     })
   }
   
+  updateUI = () => {
+    this.hideDialog()
+    this.hideNameForm()
+    this.getData()
+  }
 
 }

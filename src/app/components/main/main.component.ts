@@ -21,7 +21,14 @@ export class MainComponent implements OnInit {
     });
   }
 
+  userData : any = null
+
   ngOnInit(): void {
+
+    this.store.select('user').subscribe(res => {
+      this.userData = res.data
+    })
+
     if (localStorage.getItem('id')) {
       this.http.get(`${environment.apiUrl}/users/${localStorage.getItem('id')}`)
       .subscribe(res => this.store.dispatch(setData(res)))
